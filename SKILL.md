@@ -46,8 +46,9 @@ python <skill_dir>/scripts/run_case.py --input /input --output /app/output --wor
     --translation <work>/translation.json --terms <work>/terms.tsv
 ```
 
-合并运行**不重解析 PDF**（内容哈希指纹复用），确定性核验三段内容后产出最终
-`result.json` + `bilingual.md` + `verification.md`。
+合并运行**不重解析 PDF**（内容哈希指纹复用），确定性核验完整性、术语一致性、
+保护令牌（数字/单位/引用/公式编号）与否定限定清单后，产出最终 `result.json` +
+`bilingual.md` + `verification.md`。
 
 ## 翻译规则（阶段 2 必须遵守）
 

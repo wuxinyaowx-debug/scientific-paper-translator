@@ -273,7 +273,11 @@ def main():
     }
 
     status = parsed.get("status", "partial") if parsed else "partial"
-    if status != "failed":
+    if parsed and parsed.get("status") == "unreadable" and not segments:
+        # whole document has no text layer and no OCR result: keep the honest
+        # unreadable signal rather than downgrading it to a translation "partial"
+        status = "unreadable"
+    elif status != "failed":
         if not zh_by_id:
             status = "partial"
         elif translation_summary["untranslated"]:

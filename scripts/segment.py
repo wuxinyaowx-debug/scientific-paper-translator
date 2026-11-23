@@ -30,8 +30,7 @@ import parse_pdf as pp  # noqa: E402
 
 NUM_RE = re.compile(r"\b\d+(?:[.,]\d+)*(?:[eE][+-]?\d+)?\b")
 
-_UNITS = [
-    r"%", r"‰", r"°C", r"°F",
+_WORD_UNITS = [
     r"nm", r"μm|µm|um", r"mm", r"cm", r"km",
     r"eV", r"meV", r"keV", r"MeV", r"GeV", r"TeV",
     r"Hz", r"kHz", r"MHz", r"GHz", r"THz",
@@ -40,7 +39,10 @@ _UNITS = [
     r"mg", r"μg|µg|ug", r"kg",
     r"ms", r"kPa", r"MPa", r"GPa", r"mL", r"μL|µL|uL",
 ]
-UNIT_RE = re.compile(r"\b(?:" + "|".join(_UNITS) + r")\b", re.IGNORECASE)
+_SYMBOL_UNITS = [r"%", r"‰", r"°C", r"°F"]
+UNIT_RE = re.compile(
+    r"\b(?:" + "|".join(_WORD_UNITS) + r")\b|" + "|".join(_SYMBOL_UNITS),
+    re.IGNORECASE)
 
 CITATION_RE = re.compile(
     r"\[\d+(?:\s*[-,–]\s*\d+)*\]"          # [3], [3-5], [3,7]
