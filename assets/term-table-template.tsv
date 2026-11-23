@@ -1,0 +1,6 @@
+# 术语表模板（source<tab>target<tab>note）
+# 一行一条；# 开头为注释行。source 与 target 用制表符（Tab）分隔。
+# 同一 source 全篇只用同一 target；首次出现可括注原文。
+# 示例（替换为实际学科术语）：
+reading order	阅读顺序	全篇锁定
+bounding box	边界框	全篇锁定
